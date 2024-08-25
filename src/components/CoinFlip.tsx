@@ -11,7 +11,8 @@ const CoinFlip: React.FC = () => {
   const animationTimeoutRef = useRef<number | null>(null);
 
   const connectWallet = async () => {
-    if (window.ethereum) {
+    // Check if window.ethereum exists
+    if (typeof window.ethereum !== "undefined" && window.ethereum.request) {
       try {
         const accounts = await window.ethereum.request({
           method: "eth_requestAccounts",
@@ -21,11 +22,14 @@ const CoinFlip: React.FC = () => {
         console.error("Failed to connect wallet:", error);
       }
     } else {
-      alert("MetaMask is not installed. Please install it to use this app.");
+      alert(
+        "MetaMask is not installed or accessible. Please install it to use this app."
+      );
     }
   };
 
-  const flipCoin = async (side: "heads" | "tails") => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const flipCoin = async (_side: "heads" | "tails") => {
     if (!walletAddress) {
       alert("Please connect your wallet first!");
       return;
@@ -94,18 +98,14 @@ const CoinFlip: React.FC = () => {
           </button>
         </div>
 
-        <div className="flex justify-center items-center mt-8">
+        <div className="flex justify-center items-center mt-10">
           <div
             className={classNames("coin", {
               "flip-heads": isFlipping && result === "heads",
               "flip-tails": isFlipping && result === "tails",
+              "coin-heads": !isFlipping && result === "heads",
+              "coin-tails": !isFlipping && result === "tails",
             })}
-            // className={classNames("coin", {
-            //   "flip-heads": isFlipping && result === "heads",
-            //   "flip-tails": isFlipping && result === "tails",
-            //   "show-heads": !isFlipping && result === "heads",
-            //   "show-tails": !isFlipping && result === "tails",
-            // })}
           >
             <div className="coin-face coin-tails">TAILS</div>
             <div className="coin-face coin-heads">HEADS</div>

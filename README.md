@@ -1,50 +1,119 @@
-# React + TypeScript + Vite
+# Coin Flip Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a decentralized coin flip game built on the Ethereum blockchain. Users can connect their wallet, place bets using cryptocurrencies like ETH, and flip a coin. If the coin lands on the side they chose, they win double their bet. If not, they lose their bet.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[Coin Flip Game - Live Link](https://coinflip-cyan-alpha.vercel.app)
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Connect Wallet**: Users can connect their Ethereum wallet using MetaMask.
+- **Place Bets**: Users can select the amount of tokens (ETH) they want to bet and choose a side (heads or tails).
+- **Flip Coin**: The coin flip is animated on the screen, and the result determines whether the user wins or loses.
+- **Smart Contract**: The bets are handled through a smart contract deployed on the Ethereum blockchain.
+- **Transaction Tracking**: Users can view the transaction details on Etherscan after the bet is placed.
 
-- Configure the top-level `parserOptions` property like this:
+## Technology Stack
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Frontend
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- **React**: For building the user interface.
+- **Tailwind CSS**: For styling the application.
+- **Ethers.js**: For interacting with the Ethereum blockchain.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Backend / Smart Contract
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- **Solidity**: The programming language used to write the smart contract.
+- **Hardhat**: A development environment for Ethereum software.
+- **Infura**: For connecting to the Ethereum network.
+
+### Deployment
+
+- **Vercel**: For deploying the frontend application.
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js and npm installed on your machine.
+- MetaMask installed in your browser.
+- An Infura account for connecting to the Ethereum network.
+
+### Installation
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/Md-Mobassher/coinflip.git
+   cd coinflip
+   ```
+
+````
+
+2. **Install dependencies**:
+
+   ```bash
+   npm install
+   ```
+
+3. **Compile the smart contract**:
+
+   ```bash
+   npx hardhat compile
+   ```
+
+4. **Deploy the smart contract**:
+
+   Update the `scripts/deploy.js` with your contract details, and then run:
+
+   ```bash
+   npx hardhat run scripts/deploy.js --network rinkeby
+   ```
+
+   Note the contract address that is output after deployment.
+
+5. **Start the development server**:
+
+   ```bash
+   npm run dev
+   ```
+
+6. **Access the application**:
+
+   Open your browser and navigate to `http://localhost:3000`.
+
+### Usage
+
+1. **Connect your wallet**: Click the "Connect Wallet" button to connect your MetaMask wallet.
+2. **Place your bet**: Enter the amount of ETH you want to bet and choose heads or tails.
+3. **Flip the coin**: Watch the coin flip animation and see if you've won.
+
+### Testing with Testnet Tokens
+
+You can get testnet ETH from a faucet to use in this game:
+
+- [Rinkeby Faucet](https://faucet.rinkeby.io/)
+
+
+### Future Enhancements
+
+- Add support for more cryptocurrencies like SOL and BTC.
+- Improve the UI/UX design.
+- Implement more features like a leaderboard or historical game data.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- [Ethers.js](https://docs.ethers.io/v5/) - A library for interacting with Ethereum.
+- [Hardhat](https://hardhat.org/) - Ethereum development environment.
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework.
+
+---
+
+Happy flipping!
+
+````

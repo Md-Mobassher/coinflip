@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ethers } from "ethers";
 
 // Replace with your actual contract address
-const contractAddress = "YOUR_CONTRACT_ADDRESS";
+const contractAddress = "3KDR58P9I7878J9DR22MVSQ1W766Q42BU3";
 
-// Replace with your actual ABI
-const contractABI: ethers.ContractInterface = [
+// Use ethers.Contract directly, passing the ABI as an array
+const contractABI = [
   {
     inputs: [
       {
@@ -33,7 +34,7 @@ const contractABI: ethers.ContractInterface = [
   },
 ];
 
-export const getCoinFlipContract = (provider: ethers.Provider) => {
+export const getCoinFlipContract = (provider: any) => {
   const signer = provider.getSigner();
   return new ethers.Contract(contractAddress, contractABI, signer);
 };
