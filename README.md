@@ -49,8 +49,6 @@ This project is a decentralized coin flip game built on the Ethereum blockchain.
    cd coinflip
    ```
 
-````
-
 2. **Install dependencies**:
 
    ```bash
@@ -95,7 +93,6 @@ You can get testnet ETH from a faucet to use in this game:
 
 - [Rinkeby Faucet](https://faucet.rinkeby.io/)
 
-
 ### Future Enhancements
 
 - Add support for more cryptocurrencies like SOL and BTC.
@@ -115,5 +112,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 Happy flipping!
-
-````
